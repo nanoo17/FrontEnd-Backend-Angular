@@ -1,0 +1,42 @@
+<app-header class="row col-12"></app-header>
+<button type="button" class="btn btn-success me-2 mt-2" routerLink="/punto3-form">Cargar Pasajes</button>
+<!-- tabla de resumen-->
+<div class="row">
+  <div class="col-8">
+    <h2>Pasajes Vendidos</h2>
+    <button type="button" class="btn btn-info me-2 mt-2 mb-2" (click)="filtrarCategoria()">Filtrar Pasajes</button>
+    <button type="button" class="btn btn-info me-2 mt-2 mb-2" (click)="cargarPasajes()">Mostrar todos los
+      pasajes</button>
+    <select class="form-select mb-2" style="width: 200px;" name="" id="" [(ngModel)]="categoria">
+      <option value="a">Adulto</option>
+      <option value="m">Menor</option>
+      <option value="j">Jubilado</option>
+    </select>
+    <table class="table table-success table-hover">
+      <thead>
+        <tr>
+          <th>DNI Pasajero</th>
+          <th>Nombre Pasajero</th>
+          <th>Categoria</th>
+          <th>Precio</th>
+          <th>Fecha de Compra</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pasaje of pasajes">
+          <td>{{pasaje.pasajero.dni}}</td>
+          <td>{{pasaje.pasajero.nombre}}</td>
+          <td>{{pasaje.categoriaPasaje | categoria}}</td>
+          <td>{{pasaje.precioPasaje | currency:'ARS $'}}</td>
+          <td>{{pasaje.fechaCompra}}</td>
+          <td class="text-center">
+            <button type="button" class="btn btn-warning me-2" (click)="modificar(pasaje)">Modificar</button>
+            <button type="button" class="btn btn-danger" (click)="eliminar(pasaje)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

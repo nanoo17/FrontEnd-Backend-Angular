@@ -1,0 +1,10 @@
+#iconos {
+  height: 25px;
+}
+
+.conversor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}

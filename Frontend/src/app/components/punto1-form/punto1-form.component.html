@@ -1,0 +1,66 @@
+<app-header class="row col-12"></app-header>
+<div class="container mt-4">
+  <button type="button" class="btn btn-success mb-2" routerLink='/punto1'>Volver
+  </button>
+  <div class="mx-auto col-6">
+    <form method="post" id="formLibro">
+      <div class="my-3">
+        <label for="tituloLibro" class="label-form">Titulo</label>
+        <input type="text" class="form-control" name="tituloLibro" id="tituloLibro"
+          pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]"
+          required [(ngModel)]="libro.titulo" #tituloLibro="ngModel">
+        <div *ngIf="tituloLibro.invalid" class="alert-danger my-1 p-1">
+          <div *ngIf="tituloLibro.errors?.['required']">
+            Falta Titulo
+          </div>
+        </div>
+      </div>
+      <div class="my-3">
+        <label for="descripcionLibro" class="label-form">Descripcion</label>
+        <input type="text" class="form-control" name="descripcionLibro" id="descripcionLibro" required
+          pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]"
+          [(ngModel)]="libro.descripcion" #descripcionLibro="ngModel">
+        <div *ngIf="descripcionLibro.invalid" class="alert-danger my-1 p-1">
+          <div *ngIf="descripcionLibro.errors?.['required']">
+            Falta Descripcion
+          </div>
+        </div>
+      </div>
+
+      <div class="my-3">
+        <label for="imagenLibro" class="label-form">Url de Imagen</label>
+        <input type="url" class="form-control" name="imagenLibro" id="imagenLibro" required
+          pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]"
+          [(ngModel)]="libro.imagen" #imagenLibro="ngModel">
+        <div *ngIf="imagenLibro.invalid" class="alert-danger my-1 p-1">
+          <div *ngIf="imagenLibro.errors?.['required']">
+            Falta Imagen
+          </div>
+        </div>
+      </div>
+      <div class="my-3">
+        <label for="stockLibro" class="label-form">Stock</label>
+        <input type="number" class="form-control" name="stockLibro" id="stockLibro" required min="0"
+          [(ngModel)]="libro.stock" #stockLibro="ngModel">
+        <div *ngIf="stockLibro.invalid" class="alert-danger my-1 p-1">
+          <div *ngIf="stockLibro.errors?.['required']">
+            Falta Stock
+          </div>
+        </div>
+      </div>
+      <div class="my-3">
+        <label for="destacadoLibro" class="form-label">Destacado</label>
+        <select name="destacadoLibro" id="destacadoLibro" class="form-select" required [(ngModel)]="libro.destacado">
+          <option value=true>Si</option>
+          <option value=false>No</option>
+        </select>
+
+      </div>
+
+    </form>
+    <button type="submit" class="btn btn-success" (click)="guardarLibro()">Cargar Libro</button>
+
+  </div>
+
+
+</div>

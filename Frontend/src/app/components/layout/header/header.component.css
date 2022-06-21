@@ -1,0 +1,12 @@
+.row {
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+  margin-left: 0;
+  height: 70px;
+  font-size: x-large;
+}
+
+.navbar-brand {
+  font-size: x-large;
+}

@@ -1,0 +1,17 @@
+.img-fluid {
+  width: 900px;
+  height: 450px;
+}
+
+
+button {
+  height: 50px;
+  width: 100px;
+  margin-bottom: 45px;
+}
+
+#slider {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

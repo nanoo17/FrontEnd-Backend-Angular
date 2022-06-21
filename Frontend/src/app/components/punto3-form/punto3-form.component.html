@@ -1,0 +1,54 @@
+<app-header class="row col-12"></app-header>
+<button type="button" class="btn btn-success me-2 mt-2" routerLink="/punto3">Volver</button>
+
+<div class="container my-5">
+  <div class="mx-auto col-6">
+    <form method="post" id="formPasaje" #pasajeForm="ngForm">
+
+      <label for="pasajero" class="form-label">Pasajero</label>
+      <select [(ngModel)]="pasaje.pasajero" name="pasajero" class="form-select" id="pasajero" #pasajero="ngModel"
+        required>
+        <option *ngFor="let persona of personas" [ngValue]="persona">{{persona.dni}}, {{persona.apellido |
+          titlecase}} {{persona.nombre | titlecase}}</option>
+      </select>
+      <div *ngIf="pasajero.invalid" class="alert alert-danger my-1 p-1">
+        <div *ngIf="pasajero.errors?.['required']">
+          El pasajero es requerido
+        </div>
+      </div>
+      <div class="my-3">
+        <label for="precioPasaje" class="label-form">Precio del Pasaje</label>
+        <input type="number" class="form-control" name="precioPasaje" id="precioPasaje"
+          [(ngModel)]="pasaje.precioPasaje" required step="any" min="0" #precioPasaje="ngModel">
+        <div *ngIf="precioPasaje.invalid" class="alert alert-danger my-1 p-1">
+          <div *ngIf="precioPasaje.errors?.['required']">
+            El precio es requerido
+          </div>
+        </div>
+      </div>
+      <div class="my-3">
+        <label for="categoriaPasajero" class="form-label">Categoria de pasajero</label>
+        <select name="categoriaPasajero" id="categoriaPasajero" class="form-select" [(ngModel)]="pasaje.categoriaPasaje"
+          required #categoriaPasaje="ngModel">
+          <option value="m">Menor</option>
+          <option value="a">Adulto</option>
+          <option value="j">Jubilado</option>
+        </select>
+        <div *ngIf="categoriaPasaje.invalid" class="alert alert-danger my-1 p-1">
+          <div *ngIf="categoriaPasaje.errors?.['required']">
+            La categoria es requerida
+          </div>
+        </div>
+      </div>
+
+
+      <div class="input-group my-3">
+        <!-- si la accion es new, se muestra guardar, sino, se muestra actualizar el pasaje -->
+        <button type="button" class="btn btn-success ms-auto me-2" (click)="guardarPasaje()"
+          [disabled]="pasajeForm.form.invalid">{{action == 'new'? 'Guardar':'Actualizar'}}</button>
+        <button type="button" class="btn btn-secondary me-auto" routerLink="/punto3">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
